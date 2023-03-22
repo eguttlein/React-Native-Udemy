@@ -35,5 +35,11 @@
     "prettier": "^2.8.6",
     "react-test-renderer": "^18.2.0"
   },
-  "private": true
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test"
+    }
+  }
 }
