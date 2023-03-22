@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 export default function Brand() {
   return (
     <View style={styles.brandContainer}>
-      <Text style={styles.brandTitle}>HumanDB</Text>
+      <Text style={styles.brandTitle}>HumanoDB</Text>
     </View>
   );
 }
