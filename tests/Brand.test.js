@@ -1,5 +1,5 @@
 import {render} from '@testing-library/react-native';
-import Brand from './Brand';
+import Brand from '../components/Brand.js';
 
 describe('Brand component renders correctly', () => {
   it('renders the brand title', () => {
