@@ -29,7 +29,7 @@
   },
   "private": true,
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*": [
       "eslint ."
     ],
     "./**": [
