@@ -30,7 +30,7 @@
   "private": true,
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --ext .jsx --ext .js . --fix"
+      "eslint . --fix"
     ],
     "./**": [
       "prettier --write ."
