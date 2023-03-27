@@ -14,10 +14,17 @@ export default function Card({userInfo}) {
         <Text style={styles.cardItem}>User:</Text>
         <Text>{username}</Text>
       </View>
-      <Text style={styles.cardItem}>Personal Information:</Text>
-      <View style={styles.contactInfo}>
+      <Text style={styles.informationLabel}>Personal Information:</Text>
+      <View style={styles.personalInfo}>
+        <Text style={styles.cardItem}>Email:</Text>
         <Text>{email}</Text>
+      </View>
+      <View style={styles.personalInfo}>
+        <Text style={styles.cardItem}>Phone:</Text>
         <Text>{phone}</Text>
+      </View>
+      <View style={styles.personalInfo}>
+        <Text style={styles.cardItem}>Website:</Text>
         <Text>{website}</Text>
       </View>
     </View>
@@ -36,11 +43,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  contactInfo: {
-    marginTop: 10,
-  },
   cardItem: {
     color: '#154c79',
     fontSize: 15,
+  },
+  informationLabel: {
+    marginTop: 15,
+    color: '#154c79',
+    fontSize: 15,
+    fontWeight: 'bold',
   },
 });
