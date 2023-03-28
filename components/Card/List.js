@@ -1,18 +1,20 @@
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import axios from 'axios';
-import {useEffect, useState} from 'react';
 import Card from './Card';
+
+import {useQuery} from 'react-query';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com';
 
 export default function List({navigation}) {
-  const [users, setUsers] = useState([]);
+  const {isLoading, error, data} = useQuery({
+    queryKey: ['userList'],
+    queryFn: () => axios.get(`${baseUrl}/users`).then((res) => res.data),
+  });
 
-  useEffect(() => {
-    axios.get(`${baseUrl}/users`).then((response) => {
-      setUsers(response.data);
-    });
-  }, []);
+  if (isLoading) return <Text>Loading...</Text>;
+
+  if (error) return <Text>An error has occurred: {error.message}</Text>;
 
   function handleProfile(user) {
     navigation.navigate('Profile', {user: user});
@@ -21,7 +23,7 @@ export default function List({navigation}) {
   return (
     <View style={styles.container}>
       <FlatList
-        data={users}
+        data={data}
         renderItem={(itemData) => (
           <Card userInfo={itemData} press={() => handleProfile(itemData)} />
         )}

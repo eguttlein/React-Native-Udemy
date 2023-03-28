@@ -9,19 +9,24 @@ import About from './components/About/About';
 import Profile from './components/Card/Profile';
 import Contact from './components/Contact/Contact';
 
+import {QueryClient, QueryClientProvider} from 'react-query';
+
 const Stack = createNativeStackNavigator();
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <LinearGradient colors={['#1e81b0', '#e28743']} style={styles.rootView}>
       <NavigationContainer>
-        <Header />
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={List} />
-          <Stack.Screen name="Profile" component={Profile} />
-          <Stack.Screen name="About" component={About} />
-          <Stack.Screen name="Contact" component={Contact} />
-        </Stack.Navigator>
+        <QueryClientProvider client={queryClient}>
+          <Header />
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={List} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="About" component={About} />
+            <Stack.Screen name="Contact" component={Contact} />
+          </Stack.Navigator>
+        </QueryClientProvider>
       </NavigationContainer>
     </LinearGradient>
   );
