@@ -5,7 +5,7 @@ import Card from './Card';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com';
 
-export default function List() {
+export default function List({navigation}) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -14,11 +14,17 @@ export default function List() {
     });
   }, []);
 
+  function handleProfile(user) {
+    navigation.navigate('Profile', {user: user});
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
         data={users}
-        renderItem={(user) => <Card userInfo={user} />}
+        renderItem={(itemData) => (
+          <Card userInfo={itemData} press={() => handleProfile(itemData)} />
+        )}
         keyExtractor={(user) => user.id}
       />
     </View>

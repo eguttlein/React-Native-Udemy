@@ -1,11 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Link} from '@react-navigation/native';
+import {StyleSheet, View} from 'react-native';
 
 export default function Menu() {
   return (
     <View style={styles.menuContainer}>
-      <Text style={styles.menuItem}>Home</Text>
-      <Text style={styles.menuItem}>About</Text>
-      <Text style={styles.menuItem}>Contact</Text>
+      <Link style={styles.menuItem} to={{screen: 'Home'}}>
+        Home
+      </Link>
+      <Link style={styles.menuItem} to={{screen: 'About'}}>
+        About
+      </Link>
+      <Link style={styles.menuItem} to={{screen: 'Contact'}}>
+        Contact
+      </Link>
     </View>
   );
 }

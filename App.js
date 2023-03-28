@@ -1,22 +1,28 @@
 import {LinearGradient} from 'expo-linear-gradient';
-import {ImageBackground, SafeAreaView, StyleSheet} from 'react-native';
-import Header from './components/Header';
-import List from './components/List';
+import {StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+import Header from './components/Header/Header';
+import List from './components/Card/List';
+import About from './components/About/About';
+import Profile from './components/Card/Profile';
+import Contact from './components/Contact/Contact';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <LinearGradient colors={['#1e81b0', '#e28743']} style={styles.rootView}>
-      <ImageBackground
-        style={styles.rootView}
-        source={require('./assets/fondo.png')}
-        resizeMode={'cover'}
-        imageStyle={styles.backgroundImage}
-      >
-        <SafeAreaView style={styles.rootView}>
-          <Header />
-          <List />
-        </SafeAreaView>
-      </ImageBackground>
+      <NavigationContainer>
+        <Header />
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={List} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="About" component={About} />
+          <Stack.Screen name="Contact" component={Contact} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </LinearGradient>
   );
 }
@@ -24,8 +30,5 @@ export default function App() {
 const styles = StyleSheet.create({
   rootView: {
     flex: 1,
-  },
-  backgroundImage: {
-    opacity: 0.1,
   },
 });

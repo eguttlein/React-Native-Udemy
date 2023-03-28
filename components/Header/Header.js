@@ -1,6 +1,6 @@
 import {StyleSheet, View} from 'react-native';
-import Brand from './Brand';
-import Menu from './Menu';
+import Brand from '../Brand/Brand';
+import Menu from '../Header/Menu';
 
 export default function Header() {
   return (
@@ -17,5 +17,6 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 50,
   },
 });
